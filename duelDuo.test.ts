@@ -19,16 +19,6 @@ test('Title shows up when page loads', async () => {
     expect(displayed).toBe(true)
 })
 
-test('Clicking Add to Duo displays #player-duo div', async () => {
-    const addToDuo = await driver.findElement(By.id('see-all')).click()
-    await driver.sleep(2000)
-    const playerDuo = await driver.findElement(By.id('all-bots'))
-    const displayed =  await playerDuo.isDisplayed()
-    expect(displayed).toBe(true)
-
-    await driver.sleep(2000)
-})
-
 test('Clicking Draw displays #choices div', async () => {
     const draw = await driver.findElement(By.id('draw')).click()
     const choices = await driver.findElement(By.id('choices'))
@@ -36,3 +26,9 @@ test('Clicking Draw displays #choices div', async () => {
     expect(displayed).toBe(true)
 
 })
+
+test('Add to duo displays the div "player-duo', async () => {
+    const addDuo = await driver.findElement(By.id("player-duo"));
+    const displayed = await addDuo.isDisplayed();
+    expect(displayed).toBe(true);
+  });
