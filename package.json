@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "geckodriver": "^2.0.4",
     "jest": "^27.3.1",
+    "path": "^0.12.7",
     "rollbar": "^2.26.1",
     "selenium-webdriver": "^4.0.0",
     "ts-jest": "^27.0.7",

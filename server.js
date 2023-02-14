@@ -19,11 +19,14 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
+//maps the application's root URL path ('/') to a function that logs a message to Rollbar 
+//and sends the 'index.html' file located in the 'public' directory to the client's browser.
 app.get('/', (req, res) => {
     rollbar.log('Page requested');
     res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
+//routes map the '/styles' and '/js' paths to functions that respectively send the 'index.css' and 'index.js' files located in the 'public' directory to the client's browser.
 app.get('/styles', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.css'))
 })
