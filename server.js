@@ -1,9 +1,22 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
 
 app.use(express.json())
+app.use(express.static(`${__dirname}/public`))
+app.use(cors())
+
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'af84d44830754ade9b7ede2fbe41f660',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
 
 app.get('/', (req, res) => {
     rollbar.log('Page requested');
@@ -20,7 +33,7 @@ app.get('/js', (req, res) => {
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
