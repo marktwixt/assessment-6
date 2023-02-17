@@ -118,7 +118,7 @@ const putBotBack = (id) => {
 }
 
 const drawFive = () => {
-    axios.get('http://52.15.61.252/api/robots/five')
+    axios.get('http://52.15.61.252:4002/api/robots/five')
         .then(res => {
             choices = res.data.choices
             compDuo = res.data.compDuo
@@ -135,7 +135,7 @@ const duel = () => {
     renderCompDuo()
     document.querySelectorAll('.bot-btn').forEach(btn => btn.classList.add('hide'))
     setTimeout(() => {
-        axios.post('http://52.15.61.252/api/duel', {compDuo, playerDuo})
+        axios.post('http://52.15.61.252:4002/api/duel', {compDuo, playerDuo})
             .then(({data}) => {
                 resultsText.textContent = data
                 playAgainBtn.classList.remove('hide')
@@ -158,7 +158,7 @@ const reset = () => {
 }
 
 const getPlayerStats = () => {
-    axios.get('http://52.15.61.252/api/player')
+    axios.get('http://52.15.61.252:4002/api/player')
         .then(({data: {wins, losses}}) => {
             winsText.textContent = `Wins: ${wins}`
             lossesTest.textContent = `Losses: ${losses}`
@@ -166,7 +166,7 @@ const getPlayerStats = () => {
 }
 
 const getAllBots = () => {
-    axios.get('http://52.15.61.252/api/robots')
+    axios.get('http://52.15.61.252:4002/api/robots')
         .then(({data}) => {
             allBotsDiv.innerHTML = ''
         
