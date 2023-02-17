@@ -6,7 +6,7 @@ require('chromedriver')
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
 beforeEach(async () => {
-    driver.get('http://localhost:4001/')
+    driver.get('http://localhost:4002/')
 })
 
 afterAll(async () => {
